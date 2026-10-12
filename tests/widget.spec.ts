@@ -10,10 +10,6 @@ test.describe('Uchi.ru widget ', () => {
     // open uchi.ru main page
     await page.goto('/');
 
-    console.log('URL:', page.url());
-    console.log('кнопок виджета:', await page.locator('[data-test="openWidget"]').count());
-    await page.screenshot({ path: 'debug.png', fullPage: true });
-
     // close cookies popup
     await page.click('._UCHI_COOKIE__button');
   });
@@ -26,7 +22,7 @@ test.describe('Uchi.ru widget ', () => {
 
   test('closes', async ({page}) => {
     await widgetPage.openWidget();
-    
+
     await widgetPage.closeWidget();
 
     await expect(widgetPage.getWidgetBody()).not.toBeVisible();
